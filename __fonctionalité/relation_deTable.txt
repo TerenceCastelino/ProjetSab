@@ -1,0 +1,17 @@
+L'admin peut avoir plusieurs logements à louer,
+donc la relation entre Utilisateurs admin et Logements est une relation "un à plusieurs".
+
+Un logement peut avoir plusieurs réservations, donc la relation entre Logements et
+Réservations est également une relation "un à plusieurs".
+
+Une réservation est liée à un utilisateur et à un logement, donc elle a deux clés étrangères.
+
+Un logement peut avoir plusieurs images, donc la relation entre Logements et Images 
+est une relation "un à plusieurs".
+
+Un utilisateur peut laisser plusieurs avis, donc la relation entre Utilisateurs et Avis est une relation "un à plusieurs".
+
+Un logement peut recevoir plusieurs avis, donc la relation entre Logements et Avis est également une relation "un à plusieurs".
+
+La relation entre la table "Équipements" et la table "Logements" est une relation "plusieurs à un" (many-to-one).
+Cela signifie qu'un logement peut avoir plusieurs équipements, mais un équipement est associé à un seul logement.

@@ -1,0 +1,50 @@
+Utilisateurs (Users)
+- userID (clé primaire)
+- nom
+- prénom
+- email
+- mot de passe
+- ...
+
+Logements (Listings)
+- listingID (clé primaire)
+- userID (clé étrangère vers Utilisateurs)
+- titre
+- description
+- type de logement
+- prix par nuit
+- nombre de chambres
+- nombre de salles de bains
+- adresse
+- ...
+
+Réservations (Bookings)
+- bookingID (clé primaire)
+- userID (clé étrangère vers Utilisateurs)
+- listingID (clé étrangère vers Logements)
+- date de début
+- date de fin
+- montant total
+- statut de la réservation
+- ...
+
+Images (Images)
+- imageID (clé primaire)
+- listingID (clé étrangère vers Logements)
+- URL de l'image
+- ...
+
+Avis (Reviews)
+- reviewID (clé primaire)
+- userID (clé étrangère vers Utilisateurs)
+- listingID (clé étrangère vers Logements)
+- note
+- commentaire
+- date
+- ...
+
+Équipements (Amenities)
+- amenityID (clé primaire)
+- listingID (clé étrangère vers Logements)
+- nom de l'équipement
+- ...
