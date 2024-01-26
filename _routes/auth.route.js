@@ -14,8 +14,20 @@ authRouter.route('/login')
         res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
     });
 
-authRouter.route('/confirmationMail/:idUtilisateur')
+authRouter.route('/envoisMail/:emailUtilisateur')
+    .post(authController.envoisMail)
+    .all((req, res) => {
+        res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
+    });
+
+authRouter.route('/confirmation-email/:confirmationHash')
     .put(authController.confimationEmail)
+    .all((req, res) => {
+        res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
+    });
+//1071388ter
+authRouter.route('/resetPassword')
+    .put(authController.loginPerdu)
     .all((req, res) => {
         res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
     });

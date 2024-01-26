@@ -15,26 +15,6 @@ const userController = {
             console.error(err);
         }
     },
-    // update: async (req, res) => {
-    //     try {
-    //         const idUtilisateur = req.params.idUtilisateur;
-
-    //         const utilisateur = await userService.getOne(idUtilisateur);
-
-    //         const validatedData = await utilisateurValidator.validate(userData);
-    //         const updatedUser = await utilisateurService.updateUser(id, validatedData);
-
-    //         if (!updatedUser) {
-    //             res.sendStatus(404);
-    //             return;
-    //         }
-
-    //         res.status(200).json(updatedUser);
-    //     } catch (error) {
-    //         console.error('Erreur lors de la mise à jour d\'un utilisateur :', error);
-    //         res.status(400).json({ error: 'Erreur lors de la mise à jour' });
-    //     }
-    // },
     delete: async (req, res) => {
         try {
             const { idUtilisateur } = req.params;

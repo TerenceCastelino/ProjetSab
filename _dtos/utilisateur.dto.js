@@ -14,6 +14,7 @@ class UtilisateurDTO {
         this.jwt = data.jwt
         this.emailConfirme = data.emailConfirme
         this.profilActive = data.profilActive
+        this.confirmationHash = data.confirmationHash
     }
 }
 

@@ -53,6 +53,14 @@ const userService = {
             throw error;
         }
     },
+    methodeConfirmationHash: async (confirmationHash) => {
+
+        const user = await db.Utilisateur.findOne({
+            where: { confirmationHash }
+        });
+
+        return new UtilisateurDTO(user);
+    },
 }
 
 module.exports = userService

@@ -58,6 +58,10 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN(false),
             defaultValue: false,
             allowNull: false,
+        },
+        confirmationHash: {
+            type: DataTypes.STRING(300),
+            allowNull: true,
         }
     }, {
         tableName: 'utilisateur',
