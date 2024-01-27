@@ -161,7 +161,7 @@ const authController = {
             const clientJwt = authService.addJwt(token, user.idUtilisateur);
 
             if (clientJwt) {
-                // ??? methodeAuth.envoisEmailPasswordLosted(user.urlResetPasswordHash, user.prenom, user.nom, emailUtilisateur)
+                methodeAuth.envoisEmailPasswordLosted(user.urlResetPasswordHash, user.prenom, user.nom, emailUtilisateur)
                 // Si l'insertion s'est correctement déroulée, on envoi les informations dans le header et au front en json
                 res.setHeader('Authorization', `Bearer ${token}`);
                 return res.status(200).json({ token: user.jwt, idUtilisateur: user.idUtilisateur });
@@ -171,5 +171,27 @@ const authController = {
             res.sendStatus(404);
         }
     },
+    updatePasswordLosted: async (req, res) => {
+        try {
+            const urlResetPasswordHash = req.params.urlResetPasswordHash;
+            const passeword = req.body.passeword
+            const user = await userService.methodeUrlResetPasswordHash(urlResetPasswordHash);
+            if (!user) {
+                return res.status(404).json({ error: "Utilisateur non trouvé." });
+            }
+            if (user.urlResetPasswordHash === urlResetPasswordHash) {
+                user.hashedPassword = bcrypt.hashSync(passeword, 10);
+
+                const updatedUser = await userService.updateUser(user.idUtilisateur, user);
+                if (!updatedUser) {
+                    res.sendStatus(404);
+                    return;
+                }
+                return res.status(201).json({ message: 'le passeword est changé', newPassewordhacher: user.hashedPassword, motsDePasse: passeword })
+            }
+        } catch (err) {
+            throw err
+        }
+    }
 }
 module.exports = authController

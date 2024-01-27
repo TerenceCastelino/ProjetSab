@@ -61,6 +61,14 @@ const userService = {
 
         return new UtilisateurDTO(user);
     },
+    methodeUrlResetPasswordHash: async (urlResetPasswordHash) => {
+
+        const user = await db.Utilisateur.findOne({
+            where: { urlResetPasswordHash }
+        });
+
+        return new UtilisateurDTO(user);
+    },
 }
 
 module.exports = userService
