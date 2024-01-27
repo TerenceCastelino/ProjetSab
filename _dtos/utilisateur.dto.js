@@ -15,6 +15,7 @@ class UtilisateurDTO {
         this.emailConfirme = data.emailConfirme
         this.profilActive = data.profilActive
         this.confirmationHash = data.confirmationHash
+        this.urlResetPasswordHash = data.urlResetPasswordHash
     }
 }
 

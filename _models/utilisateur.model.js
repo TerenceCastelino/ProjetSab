@@ -62,6 +62,10 @@ module.exports = (sequelize) => {
         confirmationHash: {
             type: DataTypes.STRING(300),
             allowNull: true,
+        },
+        urlResetPasswordHash: {
+            type: DataTypes.STRING(300),
+            allowNull: true,
         }
     }, {
         tableName: 'utilisateur',

@@ -27,7 +27,7 @@ authRouter.route('/confirmation-email/:confirmationHash')
     });
 //1071388ter
 authRouter.route('/resetPassword')
-    .put(authController.loginPerdu)
+    .put(authController.passwordPerdu)
     .all((req, res) => {
         res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
     });
