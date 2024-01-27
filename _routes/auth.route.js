@@ -32,7 +32,7 @@ authRouter.route('/resetPassword')
         res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
     });
 authRouter.route('/resetPassword/:urlResetPasswordHash')
-    .post(authController.updatePasswordLosted)
+    .put(authController.updatePasswordLosted)
     .all((req, res) => {
         res.sendStatus(405); // Pour tout autre verbe HTTP, renvoyer une erreur (Méthode non autorisée)
     });

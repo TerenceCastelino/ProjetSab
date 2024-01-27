@@ -175,7 +175,9 @@ const authController = {
         try {
             const urlResetPasswordHash = req.params.urlResetPasswordHash;
             const passeword = req.body.passeword
+            console.log(passeword);
             const user = await userService.methodeUrlResetPasswordHash(urlResetPasswordHash);
+            console.log(user.idUtilisateur, user.prenom);
             if (!user) {
                 return res.status(404).json({ error: "Utilisateur non trouvé." });
             }
@@ -187,11 +189,14 @@ const authController = {
                     res.sendStatus(404);
                     return;
                 }
-                return res.status(201).json({ message: 'le passeword est changé', newPassewordhacher: user.hashedPassword, motsDePasse: passeword })
+                return res.status(201).json({ message: 'le passeword est changé', newPassewordhacher: user.hashedPassword, motsDePasse: passeword, user: user.nom })
             }
         } catch (err) {
             throw err
         }
     }
+
+
+
 }
 module.exports = authController
