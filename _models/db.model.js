@@ -22,6 +22,8 @@ db.Sequelize = Sequelize;
 // Import des modèles spécifiques depuis des fichiers externes
 // ___________________________________________________________
 db.Utilisateur = require('./utilisateur.model')(sequelize);
+db.TinyHouse = require('./tinyHouse.model')(sequelize);
+db.Equipement = require('./equipement.model')(sequelize);
 
 
 
@@ -30,7 +32,10 @@ db.Utilisateur = require('./utilisateur.model')(sequelize);
 // Définition des associations entre les modèles
 // _____________________________________________
 
-
+// Associer Equipement à TinyHouse avec une association 0/n
+db.Equipement.belongsTo(db.TinyHouse, { foreignKey: 'idTyniHouse', as: 'tinyHouses' });
+// Associer TinyHouse à Equipement avec une association 1/1
+db.TinyHouse.hasMany(db.Equipement, { foreignKey: 'idTyniHouse', as: 'equipement' });
 
 
 
