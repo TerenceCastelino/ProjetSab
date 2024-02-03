@@ -23,7 +23,8 @@ db.Sequelize = Sequelize;
 // ___________________________________________________________
 db.Utilisateur = require('./utilisateur.model')(sequelize);
 db.TinyHouse = require('./tinyHouse.model')(sequelize);
-db.Equipement = require('./equipement.model')(sequelize);
+// db.Equipement = require('./equipement.model')(sequelize);
+db.Image = require('./image.model')(sequelize);
 
 
 
@@ -33,9 +34,11 @@ db.Equipement = require('./equipement.model')(sequelize);
 // _____________________________________________
 
 // Associer Equipement à TinyHouse avec une association 0/n
-db.Equipement.belongsTo(db.TinyHouse, { foreignKey: 'idTyniHouse', as: 'tinyHouses' });
+// db.Equipement.belongsTo(db.TinyHouse, { foreignKey: 'idTyniHouse', as: 'tinyHouses' });
 // Associer TinyHouse à Equipement avec une association 1/1
-db.TinyHouse.hasMany(db.Equipement, { foreignKey: 'idTyniHouse', as: 'equipement' });
+// db.TinyHouse.hasMany(db.Equipement, { foreignKey: 'idTyniHouse', as: 'equipement' });
+// db.Image.belongsTo(db.TinyHouse, { foreignKey: 'idTyniHouse', as: 'tinyHouses' })
+// db.TinyHouse.hasMany(db.Image, { foreignKey: 'idTyniHouse', as: 'image' });
 
 
 

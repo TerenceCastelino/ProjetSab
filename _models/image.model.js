@@ -8,38 +8,39 @@ const db = require('./db.model')
  * @returns {ModelStatic<any>}
  */
 
+
 module.exports = (sequelize) => {
-    const TinyHouse = sequelize.define('tinyHouse', {
-        idTinyHouse: {
+    const Image = sequelize.define('image', {
+        idImage: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        adresse: {
-            type: DataTypes.STRING(150),
+        chemin: {
+            type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
+        // idTinyHouse: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        // },
         model: {
             type: DataTypes.ENUM('model1', 'model2'),
             allowNull: false
+        },
+        nomImage: {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
-
     }, {
-        tableName: 'tinyHouse',
+        tableName: 'image',
         timestamps: true,
-        indexes: [
-            {
-                name: 'unique_adresse',
-                fields: ['adresse'],
-                unique: true,
-            },
-        ],
     });
 
 
 
 
 
-    return TinyHouse;
+    return Image;
 };
+

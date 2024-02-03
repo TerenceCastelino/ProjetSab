@@ -5,6 +5,7 @@ class TinyHouseDTO {
 
         this.idTinyHouse = data.idTinyHouse
         this.adresse = data.adresse
+        this.model = data.model
 
     }
 }

@@ -41,13 +41,15 @@ const tinyHouseController = {
         const tinyData = req.body;
         const validatedData = await tinyValidator.validate(tinyData);
         const {
-            idTinyHouse,
+            // idTinyHouse,
             adresse,
+            model
         } = validatedData;
 
         const tinyInserted = await tinyHouseService.creatTinyHouse({
-            idTinyHouse,
+            // idTinyHouse,
             adresse,
+            model
         });
 
         if (tinyInserted) {
