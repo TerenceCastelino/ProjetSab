@@ -1,0 +1,71 @@
+je add une prereservation 
+
+avec le model choisi par l user je dois selection tous les tiny d un model dans un tableau
+
+je fais un boucle for of pour prendre un a un les tiny 
+
+-je teste ensuite la disponibilite du tiny sur les date voulue-
+je dois donc au prealable selectionne le jour de debut et le jour de fin en unix je cree donc une boucle
+si pour le idTinyHouse dans jourReserver a  un  jourunix choisi  qui existe alors il faut passer a un autre tiny
+
+si non 
+on cree une reservation avec les donnée 
+idUtilisateur
+idReservation qui se cree
+datedebut 
+datefin
+idTinyhouse
+
+et
+on prend les jours selection et on les passe dans jourReserver
+on dois donc refaire un boucle avec debut et fin en unix
+
+idreservation cree au desusu
+
+et les jourunix qui correspond a l index de la boucle
+et sa date
+
+ensuite on passe au payement limiter par un timestamp
+
+a la fin du timestamp
+on passe soit paymement confir a true ou false
+
+si true 
+on passe payement confirmer a true
+et la reservation est terminer
+
+si false 
+on suprime la reservation
+et par l idreservation on suprime les jourReserver de par l idReservation
+
+
+
+________________________________________________
+Oui, il est souvent recommandé de diviser une tâche complexe en plusieurs fonctionnalités plus petites et plus gérables. Cela rend le code plus lisible, réutilisable et facilite la maintenance. Voici comment vous pourriez diviser le processus que vous avez décrit en différentes fonctionnalités :
+
+Validation de la disponibilité du Tiny House :
+
+Créez une fonction qui prend en entrée l'ID du modèle de Tiny House, la date de début et la date de fin en format Unix.
+Utilisez Sequelize pour vérifier si la Tiny House est disponible pour ces dates.
+Renvoyez un résultat indiquant si la Tiny House est disponible ou non.
+Création de la réservation :
+
+Créez une fonction qui prend en entrée les informations nécessaires (ID utilisateur, ID Tiny House, dates, etc.).
+Utilisez Sequelize pour créer une nouvelle réservation dans la base de données.
+Renvoyez l'ID de la réservation créée.
+Création des jours réservés :
+
+Créez une fonction qui prend en entrée l'ID de la réservation, la date de début, la date de fin et l'ID Tiny House.
+Utilisez Sequelize pour créer les entrées dans la table jourReserver correspondantes aux jours réservés.
+Gestion du paiement :
+
+Créez une fonction qui prend en entrée l'ID de la réservation.
+Effectuez le processus de paiement, gérant également les erreurs éventuelles.
+Mettez à jour le statut du paiement dans la base de données en conséquence.
+Confirmation de la réservation :
+
+Créez une fonction qui prend en entrée l'ID de la réservation et le statut du paiement.
+Si le paiement est confirmé, mettez à jour le statut de la réservation en conséquence.
+Sinon, supprimez la réservation et les jours réservés correspondants.
+En organisant votre code de cette manière, chaque fonctionnalité a une responsabilité spécifique, ce qui rend le code plus modulaire et plus facile à comprendre. Vous pouvez également les réutiliser plus facilement dans d'autres parties de votre application si nécessaire.
+

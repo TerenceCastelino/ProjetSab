@@ -1,5 +1,6 @@
 const db = require('../_models/db.model');
 const TinyHouseDTO = require('../_dtos/tinyHouse.dto')
+const { Op } = require('sequelize');
 
 const tinyHouseService = {
 
@@ -65,6 +66,18 @@ const tinyHouseService = {
         }
 
     },
+    getAllTinyModel: async (model) => {
+        try {
+            const tinyHouses = await db.TinyHouse.findAll({
+                where: { model }
+            });
+            return tinyHouses.map(tiny => new TinyHouseDTO(tiny));
+
+        } catch (error) {
+            throw error;
+        }
+
+    },
     creatTinyHouse: async (data) => {
         try {
             const tiny = await db.TinyHouse.create(data);
@@ -73,7 +86,13 @@ const tinyHouseService = {
             throw error;
         }
 
-    }
+    },
+    //!
+    // Fonction pour valider la disponibilité du Tiny House
+
+
+
+
 
 }
 

@@ -25,6 +25,8 @@ db.Utilisateur = require('./utilisateur.model')(sequelize);
 db.TinyHouse = require('./tinyHouse.model')(sequelize);
 // db.Equipement = require('./equipement.model')(sequelize);
 db.Image = require('./image.model')(sequelize);
+db.Reservation = require('./reservation.model')(sequelize);
+db.JourReserver = require('./jourReservation.model')(sequelize);
 
 
 
@@ -39,7 +41,19 @@ db.Image = require('./image.model')(sequelize);
 // db.TinyHouse.hasMany(db.Equipement, { foreignKey: 'idTyniHouse', as: 'equipement' });
 // db.Image.belongsTo(db.TinyHouse, { foreignKey: 'idTyniHouse', as: 'tinyHouses' })
 // db.TinyHouse.hasMany(db.Image, { foreignKey: 'idTyniHouse', as: 'image' });
+// Relation entre Utilisateur et Reservation
+db.Utilisateur.hasMany(db.Reservation, { foreignKey: 'idUtilisateur' });
+db.Reservation.belongsTo(db.Utilisateur, { foreignKey: 'idUtilisateur' });
+
+// Relation entre TinyHouse et Reservation
+db.TinyHouse.hasMany(db.Reservation, { foreignKey: 'idTinyHouse' });
+db.Reservation.belongsTo(db.TinyHouse, { foreignKey: 'idTinyHouse' });
+
+// Relation entre JourReserver et Reservation
+db.JourReserver.belongsTo(db.Reservation, { foreignKey: 'idReservation' });
+db.Reservation.hasMany(db.JourReserver, { foreignKey: 'idReservation' });
 
 
 
 module.exports = db;
+
